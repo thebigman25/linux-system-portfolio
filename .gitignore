@@ -1,0 +1,26 @@
+# --- System Files ---
+.DS_Store
+Thumbs.db
+*~
+*.swp
+.fuse_hidden*
+
+# --- Security & Secrets ---
+.env
+*.pem
+*.key
+*.secrets
+secrets/
+
+# --- Build & Compilations ---
+bin/
+obj/
+*.o
+*.out
+*.exe
+__pycache__/
+*.py[cod]
+
+# --- Logs ---
+*.log
+logs/
