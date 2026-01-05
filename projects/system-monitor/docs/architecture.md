@@ -1,24 +1,28 @@
-# Architecture Decision Record (ADR)
-> **Project**: [Project Name] | **Version**: 1.0.0 | **Status**: [Draft/Approved]
+# Architecture Decision Record (ADR): System Monitor
+> **Project**: System Health Monitor | **Version**: 1.0.0 | **Status**: Approved
 
 ## 1. Change History
 | Version | Date | Author | Description |
 | :--- | :--- | :--- | :--- |
-| 1.0.0 | [Date] | thebigman25 | Initial Architecture Definition |
+| 1.0.0 | 2026-01-04 | thebigman25 | Initial Script & Logic Definition |
 
 ## 2. System Components
-* **Component A**: [Description & Role]
-* **Component B**: [Description & Role]
+* **Bash Logic (monitor.sh)**: The core engine using standard Linux utilities (`top`, `free`, `df`).
+* **Log Storage (system_health.log)**: Persistent text-based logging for historical analysis.
+* **Cron (Future)**: Scheduling agent for automated execution.
 
 ## 3. Data Flow & Integration
-[Provide a high-level description of data movement. Placeholder for Mermaid/ASCII diagram below]
+The script follows a linear data flow:
+1. **Extraction**: System vitals are pulled from `/proc` via CLI tools.
+2. **Transformation**: `awk` and `cut` sanitize output into integer percentages.
+3. **Load**: Appends formatted strings to the local log file.
 
-[ Diagram Placeholder ]
+
 
 ## 4. Engineering Assumptions
-* **Assumption 1**: [e.g., Target system is Ubuntu 22.04 LTS]
-* **Assumption 2**: [e.g., Network connectivity is persistent]
+* **Environment**: Script assumes a Debian-based Linux environment (mafiaOS).
+* **Dependencies**: Relies on `procps` (for `top` and `free`) being installed.
 
 ## 5. Decision Context
-* **Constraints**: [Why this specific architecture was chosen]
-* **Alternatives Considered**: [What was rejected and why]
+* **Constraints**: Avoided complex Python/Go dependencies to ensure zero-overhead monitoring.
+* **Alternatives**: Considered `sar` (sysstat), but chose a custom script to demonstrate Bash proficiency.

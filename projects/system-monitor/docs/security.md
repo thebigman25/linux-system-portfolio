@@ -1,24 +1,24 @@
-# Security & Threat Model
-> **Project**: [Project Name] | **Version**: 1.0.0
+# Security & Threat Model: System Monitor
+> **Project**: System Health Monitor | **Version**: 1.0.0
 
 ## 1. Change History
 | Version | Date | Description |
 | :--- | :--- | :--- |
-| 1.0.0 | [Date] | Initial Security Audit & Threat Model |
+| 1.0.0 | 2026-01-04 | Initial Security Audit |
 
 ## 2. Threat Assumptions
-* **Trust Boundary**: [Where does your control end?]
-* **Adversary Capability**: [What level of threat are we defending against?]
+* **Trust Boundary**: Script operates locally; assume the local user has execution rights.
+* **Adversary Capability**: Low risk; potential for log tampering if directory permissions are weak.
 
 ## 3. Vulnerability Analysis & Mitigations
 | Threat / Risk | Impact | Mitigation Strategy |
 | :--- | :--- | :--- |
-| [e.g., Unauthorized Access] | High | [e.g., SSH Key-only Auth] |
-| [e.g., Data Leakage] | Med | [e.g., Environment Variable usage for Secrets] |
+| Log Overfill (DoS) | Low | Future: Implement log rotation (logrotate). |
+| Command Injection | Med | Inputs are hardcoded; no user-provided strings are evaluated. |
 
 ## 4. Secure Implementation Notes
-* **Secret Management**: [How are keys/passwords handled?]
-* **Privilege Level**: [Does this run as root/sudo? Why?]
+* **Privilege Level**: Script runs as a standard user. Root is not required for monitoring basic vitals.
+* **Secret Management**: No credentials or API keys are used in this module.
 
 ## 5. Security Limitations
-* [What is explicitly NOT protected by this design?]
+* This script does not encrypt logs; sensitive system info is stored in plain text.
