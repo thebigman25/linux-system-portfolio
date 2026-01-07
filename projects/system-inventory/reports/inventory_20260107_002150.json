@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-01-07T05:21:50Z",
+  "system": {
+    "kernel": "6.14.0-37-generic",
+    "os_distro": "Ubuntu 24.04.3 LTS",
+    "cpu": "Intel(R) Core(TM) i7-7700K CPU @ 4.20GHz"
+  },
+  "resources": {
+    "total_ram": "7.8Gi",
+    "disk_usage_root": "29%"
+  },
+  "network": {
+    "local_ip": "192.168.2.46",
+    "public_ip": "76.69.92.89"
+  },
+  "users": {
+    "current_logins": "adel"
+  }
+}
